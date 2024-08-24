@@ -1,79 +1,65 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📰 News App - React Native
 
-# Getting Started
+This project is a React Native news app that fetches the top 100 news headlines from the NewsAPI, stores them for offline access, and displays them in a dynamic list view. The app updates the headlines periodically, allows user interaction, and manages state using Redux and Redux-Saga.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## 📋 Features
 
-## Step 1: Start the Metro Server
+- **Dynamic Headline Updates**: Fetches and displays headlines in batches, with new headlines added to the list every 10 seconds.
+- **Offline Access**: Headlines are stored locally for access without an internet connection.
+- **User Interaction**: Swipe to delete headlines or pin them to the top of the list. Pinned headlines remain at the top during list updates.
+- **Manual Refresh**: Users can manually refresh the list to fetch new headlines, which resets the automatic update timer.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## 🛠️ Technical Implementation
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### 🌐 API Integration
 
-```bash
-# using npm
-npm start
+- **NewsAPI Integration**: The app integrates with NewsAPI to fetch the latest headlines.
+  - Replace 'KEY' in the `getHeadlinesFromApi.ts` file with your actual NewsAPI key.
+  - Axios is used for making API requests with proper error handling.
 
-# OR using Yarn
-yarn start
-```
+### 🌍 State Management
 
-## Step 2: Start your Application
+- **Redux**: Global state management ensures efficient data handling and synchronization.
+- **Redux-Saga**: Handles side effects like asynchronous API calls, ensuring a predictable and clean data flow.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### 📜 List Rendering
 
-### For Android
+- **SwipeListView**: Utilized to render the list of headlines, allowing for swipe actions like delete and pin.
+- List updates dynamically without losing the user's scroll position, even during periodic updates or manual refreshes.
 
-```bash
-# using npm
-npm run android
+## 🚀 Getting Started
 
-# OR using Yarn
-yarn android
-```
+### 📦 Prerequisites
 
-### For iOS
+- Node.js and npm or yarn installed.
+- React Native development environment set up.
 
-```bash
-# using npm
-npm run ios
+### 🔧 Installation
 
-# OR using Yarn
-yarn ios
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/news-app-react-native.git
+   ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+2. Install dependencies:
+   ```bash
+   cd news-app-react-native
+   npm install # or yarn install
+   ```
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+3. Add your NewsAPI key:
+   - Open the `getHeadlinesFromApi.ts` file.
+   - Replace 'KEY' with your actual NewsAPI key.
+   ```javascript
+   const API_KEY = 'YOUR_API_KEY_HERE';
+   ```
 
-## Step 3: Modifying your App
+4. Run the app:
+   ```bash
+   npm start # or yarn start
+   ```
 
-Now that you have successfully run the app, let's modify it.
+## 📓 Additional Notes
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- **Redux and Redux-Saga**: Critical for managing state and handling side effects in the app, providing a smooth user experience.
+- **Security**: Ensure your API key is kept secure and not exposed in public repositories.
