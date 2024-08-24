@@ -27,6 +27,33 @@ This project is a React Native news app that fetches the top 100 news headlines 
 - **SwipeListView**: Utilized to render the list of headlines, allowing for swipe actions like delete and pin.
 - List updates dynamically without losing the user's scroll position, even during periodic updates or manual refreshes.
 
+### 🧠 Main Component Logic
+
+The `NewsList` component is the core of the application, implementing the following key functionalities:
+
+1. **State Management**: 
+   - Utilizes Redux for global state management, accessing headline data, pagination info, and pinned headlines.
+   - Local state manages refreshing and loading states.
+
+2. **Dynamic Content Loading**:
+   - Implements an effect to fetch new headlines when the current batch is exhausted.
+   - Another effect adds new headlines every 5 seconds, simulating real-time updates.
+
+3. **User Interactions**:
+   - Implements swipe-to-delete and swipe-to-pin actions on list items.
+   - Provides a manual refresh functionality to fetch new headlines on demand.
+
+4. **Rendering**:
+   - Uses `SwipeListView` for efficient list rendering with swipe actions.
+   - Renders each headline with its title, source, publication time, and image (if available).
+   - Implements hidden buttons for delete and pin actions.
+
+5. **Performance Optimization**:
+   - Slices the headline array to display only the required items, improving render efficiency.
+   - Uses `extraData` prop to ensure re-renders when the number of displayed headlines changes.
+
+This component showcases effective use of React hooks (`useEffect`, `useState`) and Redux integration (`useDispatch`, `useSelector`) to create a dynamic and interactive news feed.
+
 ## 🚀 Getting Started
 
 ### 📦 Prerequisites
